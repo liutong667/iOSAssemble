@@ -9,7 +9,9 @@
 #import "GCDTestController.h"
 
 @interface GCDTestController ()
-
+{
+    dispatch_source_t timer;
+}
 @end
 
 @implementation GCDTestController
@@ -233,8 +235,9 @@
     //        NSLog(@"%zu",index);
     //    });
     /// dispatch_apply函数会等待全部处理执行结束，因此上面的代码会死锁
+    //dispatch_apply函数与dipatch_sync函数相同，会等待处理执行结束
     dispatch_apply(10, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(size_t index) {
-        NSLog(@"%zu",index);
+        NSLog(@"%zu----%@",index,[NSThread currentThread]);
     });
     NSLog(@"done");
     
@@ -242,7 +245,7 @@
     dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(globalQueue, ^{
         dispatch_apply(array.count, globalQueue, ^(size_t index) {
-            NSLog(@"%@",array[index]);
+            NSLog(@"%@--------%@",array[index],[NSThread currentThread]);
         });
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"done");
@@ -251,13 +254,69 @@
 }
 #pragma mark - dispatch_suspend、dispatch_resume
 #pragma mark - Dispatch Semaphore
-
+- (void)test12 {
+//    ///下面代码很大可能执行时由于内存错误导致应用程序异常结束
+//    NSMutableArray *array = [NSMutableArray array];
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    for (int i = 0; i < 1000; i++) {
+//        dispatch_async(queue, ^{
+//            [array addObject:@(i)];
+//        });
+//    }
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    for (int i =0; i<1000; i++) {
+        dispatch_async(globalQueue, ^{
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            [array addObject:@(i)];
+            NSLog(@"----%d,%@",i,[NSThread currentThread]);
+            dispatch_semaphore_signal(semaphore);
+        });
+    }
+}
+#pragma mark - dispatch_once
+- (void)test13 {
+    static int initialized = NO;
+    if (initialized == NO) {
+        /*初始化操作
+         */
+        initialized = YES;
+    }
+    
+    ///上面代码等价于
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+    });
+}
+#pragma mark - Dispatch Source
+- (void)test14 {
+    static int count = 100;
+    timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC, 1 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(timer, ^{
+        if (count > 0) {
+            NSLog(@"----%i",count--);
+        }
+    });
+    dispatch_source_set_cancel_handler(timer, ^{
+        NSLog(@"timer cancle");
+    });
+    dispatch_resume(timer);
+}
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    [self test11];
+    
+    [self test14];
     
 }
+- (void)dealloc {
+    NSLog(@"%s---dealloc",__func__);
+    dispatch_source_cancel(timer);
+}
 @end
+
