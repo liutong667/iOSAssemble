@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A81FB1D5209F0A240049D3E7 /* GCDTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81FB1D4209F0A240049D3E7 /* GCDTestController.m */; };
 		A88DA3F12078B90E00979D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A88DA3F02078B90E00979D31 /* AppDelegate.m */; };
 		A88DA3F42078B90E00979D31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88DA3F32078B90E00979D31 /* ViewController.m */; };
 		A88DA3F72078B90E00979D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88DA3F52078B90E00979D31 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A81FB1D3209F0A240049D3E7 /* GCDTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDTestController.h; sourceTree = "<group>"; };
+		A81FB1D4209F0A240049D3E7 /* GCDTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDTestController.m; sourceTree = "<group>"; };
 		A88DA3EC2078B90E00979D31 /* iOSAssemble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAssemble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88DA3EF2078B90E00979D31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A88DA3F02078B90E00979D31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A81FB1D2209F0A0C0049D3E7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A81FB1D3209F0A240049D3E7 /* GCDTestController.h */,
+				A81FB1D4209F0A240049D3E7 /* GCDTestController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
 		A88DA3E32078B90E00979D31 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +90,7 @@
 		A88DA4052078B9C100979D31 /* item1 */ = {
 			isa = PBXGroup;
 			children = (
+				A81FB1D2209F0A0C0049D3E7 /* controller */,
 				A88DA4062078B9F800979D31 /* LTItemOneController.h */,
 				A88DA4072078B9F800979D31 /* LTItemOneController.m */,
 			);
@@ -156,6 +169,7 @@
 			files = (
 				A88DA3F42078B90E00979D31 /* ViewController.m in Sources */,
 				A88DA4082078B9F800979D31 /* LTItemOneController.m in Sources */,
+				A81FB1D5209F0A240049D3E7 /* GCDTestController.m in Sources */,
 				A88DA3FF2078B91000979D31 /* main.m in Sources */,
 				A88DA3F12078B90E00979D31 /* AppDelegate.m in Sources */,
 			);

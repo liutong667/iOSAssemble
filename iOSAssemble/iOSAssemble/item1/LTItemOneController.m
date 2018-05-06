@@ -7,6 +7,7 @@
 //
 
 #import "LTItemOneController.h"
+#import "GCDTestController.h"
 
 @interface LTItemOneController ()
 @property (nonatomic, strong) NSArray *dataArr;
@@ -18,9 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataArr = @[@"弹窗半屏关闭手势",
+                     @"GCD",
                        ];
     self.vcArr = @[NSStringFromClass([UIViewController class]),
+                   NSStringFromClass([GCDTestController class]),
                      ];
+    
 }
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -41,9 +45,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Class vcClass = NSClassFromString(self.vcArr[indexPath.row]);
     UIViewController *vc = [[vcClass alloc] init];
-//    if ([self.dataArr[indexPath.row] isEqualToString:@"group"]) {
-//        vc = [[vcClass alloc] initWithStyle:UITableViewStyleGrouped];
-//    }
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
