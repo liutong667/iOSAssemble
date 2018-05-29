@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A81FB1D5209F0A240049D3E7 /* GCDTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81FB1D4209F0A240049D3E7 /* GCDTestController.m */; };
+		A823100D20BD2D1C0043CD8A /* NSOperationTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A823100C20BD2D1C0043CD8A /* NSOperationTestVC.m */; };
+		A823101520BD55410043CD8A /* ImageDownTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A823101420BD55410043CD8A /* ImageDownTableVC.m */; };
+		A823101920BD55990043CD8A /* LTImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A823101720BD55990043CD8A /* LTImageCell.m */; };
 		A88DA3F12078B90E00979D31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A88DA3F02078B90E00979D31 /* AppDelegate.m */; };
 		A88DA3F42078B90E00979D31 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A88DA3F32078B90E00979D31 /* ViewController.m */; };
 		A88DA3F72078B90E00979D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88DA3F52078B90E00979D31 /* Main.storyboard */; };
@@ -20,6 +23,12 @@
 /* Begin PBXFileReference section */
 		A81FB1D3209F0A240049D3E7 /* GCDTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDTestController.h; sourceTree = "<group>"; };
 		A81FB1D4209F0A240049D3E7 /* GCDTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GCDTestController.m; sourceTree = "<group>"; };
+		A823100B20BD2D1C0043CD8A /* NSOperationTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSOperationTestVC.h; sourceTree = "<group>"; };
+		A823100C20BD2D1C0043CD8A /* NSOperationTestVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperationTestVC.m; sourceTree = "<group>"; };
+		A823101320BD55410043CD8A /* ImageDownTableVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageDownTableVC.h; sourceTree = "<group>"; };
+		A823101420BD55410043CD8A /* ImageDownTableVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageDownTableVC.m; sourceTree = "<group>"; };
+		A823101620BD55990043CD8A /* LTImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTImageCell.h; sourceTree = "<group>"; };
+		A823101720BD55990043CD8A /* LTImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTImageCell.m; sourceTree = "<group>"; };
 		A88DA3EC2078B90E00979D31 /* iOSAssemble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAssemble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88DA3EF2078B90E00979D31 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A88DA3F02078B90E00979D31 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,6 +59,12 @@
 			children = (
 				A81FB1D3209F0A240049D3E7 /* GCDTestController.h */,
 				A81FB1D4209F0A240049D3E7 /* GCDTestController.m */,
+				A823100B20BD2D1C0043CD8A /* NSOperationTestVC.h */,
+				A823100C20BD2D1C0043CD8A /* NSOperationTestVC.m */,
+				A823101320BD55410043CD8A /* ImageDownTableVC.h */,
+				A823101420BD55410043CD8A /* ImageDownTableVC.m */,
+				A823101620BD55990043CD8A /* LTImageCell.h */,
+				A823101720BD55990043CD8A /* LTImageCell.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -168,10 +183,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A88DA3F42078B90E00979D31 /* ViewController.m in Sources */,
+				A823101520BD55410043CD8A /* ImageDownTableVC.m in Sources */,
 				A88DA4082078B9F800979D31 /* LTItemOneController.m in Sources */,
+				A823101920BD55990043CD8A /* LTImageCell.m in Sources */,
 				A81FB1D5209F0A240049D3E7 /* GCDTestController.m in Sources */,
 				A88DA3FF2078B91000979D31 /* main.m in Sources */,
 				A88DA3F12078B90E00979D31 /* AppDelegate.m in Sources */,
+				A823100D20BD2D1C0043CD8A /* NSOperationTestVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

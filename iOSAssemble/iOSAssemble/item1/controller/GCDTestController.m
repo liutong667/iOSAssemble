@@ -185,6 +185,7 @@
         __block int result = 0;
         dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             result = 1;
+            NSLog(@"%@---",[NSThread currentThread]);
         });
         NSLog(@"global queue执行后的结果result = %d",result);
     });
@@ -209,7 +210,7 @@
     dispatch_queue_t serialQueue = dispatch_queue_create("mySerialQueue", 0);
     dispatch_queue_t concurrentQueue = dispatch_queue_create("myConcurrentQueue", DISPATCH_QUEUE_CONCURRENT);//使用该线程则不会死锁
     dispatch_async(serialQueue, ^{
-        dispatch_sync(serialQueue, ^{
+        dispatch_sync(concurrentQueue, ^{
             NSLog(@"hello--%@",[NSThread currentThread]);
         });
         NSLog(@"world-%@",[NSThread currentThread]);
@@ -219,10 +220,10 @@
     dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSLog(@"0---%@",[NSThread currentThread]);
     });
-    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_sync(dispatch_queue_create("myConcurrentQueue", DISPATCH_QUEUE_CONCURRENT), ^{
         NSLog(@"1---%@",[NSThread currentThread]);
     });
-    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_sync(dispatch_queue_create("mySerialQueue", 0), ^{
         NSLog(@"2---%@",[NSThread currentThread]);
     });dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSLog(@"3---%@",[NSThread currentThread]);
@@ -311,7 +312,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self test14];
+    [self test10_1];
     
 }
 - (void)dealloc {

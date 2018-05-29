@@ -8,6 +8,8 @@
 
 #import "LTItemOneController.h"
 #import "GCDTestController.h"
+#import "NSOperationTestVC.h"
+#import "ImageDownTableVC.h"
 
 @interface LTItemOneController ()
 @property (nonatomic, strong) NSArray *dataArr;
@@ -20,9 +22,13 @@
     [super viewDidLoad];
     self.dataArr = @[@"弹窗半屏关闭手势",
                      @"GCD",
+                     @"NSOperation",
+                     @"ImageDownTableVC"
                        ];
     self.vcArr = @[NSStringFromClass([UIViewController class]),
                    NSStringFromClass([GCDTestController class]),
+                   NSStringFromClass([NSOperationTestVC class]),
+                   NSStringFromClass([ImageDownTableVC class]),
                      ];
     
 }
